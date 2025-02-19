@@ -1,7 +1,9 @@
 #pragma once
 
 #include "byte_stream.hh"
-
+#include <cstdint>
+#include <set>
+#include <utility>
 class Reassembler
 {
 public:
@@ -42,5 +44,13 @@ public:
   const Writer& writer() const { return output_.writer(); }
 
 private:
+uint64_t front { 0 };
+// Number of set bytes in data.
+uint64_t bytes_valid { 0 };
+// Whether the last substring has been inserted.
+bool last_substring_inserted { false };
+// A pair represents validity and data of a byte.
+std::deque<std::pair<bool, char>> buffer {};
+// std::set<std::pair<uint64_t,uint64_t>> unused;
   ByteStream output_;
 };

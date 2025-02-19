@@ -52,7 +52,8 @@ void speed_test( const size_t num_chunks,  // NOLINT(bugprone-easily-swappable-p
   output_data.reserve( data.size() );
 
   const auto start_time = steady_clock::now();
-  while ( not split_data.empty() ) {
+  while ( not split_data.empty() ) 
+  {
     auto& next = split_data.front();
     reassembler.insert( get<uint64_t>( next ), move( get<string>( next ) ), get<bool>( next ) );
     split_data.pop();
