@@ -51,6 +51,7 @@ uint64_t bytes_valid { 0 };
 bool last_substring_inserted { false };
 // A pair represents validity and data of a byte.
 std::deque<std::pair<bool, char>> buffer {};
+uint64_t last_index { 0 };
 // std::set<std::pair<uint64_t,uint64_t>> unused;
   ByteStream output_;
 };
